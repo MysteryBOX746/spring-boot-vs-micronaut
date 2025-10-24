@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-micronaut
+  labels:
+    app: hello-micronaut
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-micronaut
+  template:
+    metadata:
+      name: hello-micronaut
+      labels:
+        app: hello-micronaut
+    spec:
+      containers:
+        - name: hello-micronaut
+          image: hello-micronaut
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+      restartPolicy: Always
